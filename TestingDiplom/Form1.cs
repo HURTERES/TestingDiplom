@@ -132,7 +132,7 @@ namespace TestingDiplom
             if (!(CmbSubjArea.SelectedIndex == -1 || TbxNameOfTest.Text.Trim() == "" || TbxQuestion.Text.Trim() == "" || TbxAnswer1.Text.Trim() == "" || TbxAnswer2.Text.Trim() == "" || TbxAnswer3.Text.Trim() == "" || NumCurrentAnswer.Value == 0))
             {
                 SqlConnection Con = new SqlConnection(TxtCon);
-                SqlCommand Cmd = new SqlCommand($"insert into Tests (IdCategory, NameTest, NumOfTest, Question, AnswerOptions, CurrentAnswer, BallForOne) values ('{CmbSubjArea.SelectedIndex+1}','{TbxNameOfTest.Text}', '{Count-1}','{TbxQuestion.Text}', '{TbxAnswer1.Text + " " + TbxAnswer2.Text + " " + TbxAnswer3.Text}', '{NumCurrentAnswer.Value}', '{NumBall.Value}')", Con);
+                SqlCommand Cmd = new SqlCommand($"insert into Tests (IdCategory, NameTest, NumOfTest, Question, AnswerOptions, CurrentAnswer, BallForOne) values ('{CmbSubjArea.SelectedIndex+1}','{TbxNameOfTest.Text}', '{Count-1}','{TbxQuestion.Text}', '{TbxAnswer1.Text.Trim() + " " + TbxAnswer2.Text.Trim() + " " + TbxAnswer3.Text.Trim()}', '{NumCurrentAnswer.Value}', '{NumBall.Value}')", Con);
                 Con.Open();
                 Cmd.ExecuteNonQuery();
                 Con.Close();
